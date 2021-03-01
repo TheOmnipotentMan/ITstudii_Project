@@ -31,6 +31,7 @@ namespace ITstudii
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -86,11 +87,33 @@ namespace ITstudii
 
 
 
-        // Ugly code that nobody needs to see
+
+
+
+
+        // Handles the selection of Projects from the Nav-Menu, is ugly code that nobody needs to see
         #region ProjectSelect
+
+        /* TODO A lot of this stuff, and project selection in general can be done better
+         * Templates for xaml and variables in the classes (like IsCompleted) could automate most of the navigation menu
+         * Might be implemented in future
+         * !! could use button-name as argument !!
+         */
+
+        /* At the moment, every project has its own function to load the corresponding page.
+         * This is because the selection is done with a button, and a button, afaik, can only call a method, it doens't hold any arguments.
+         * An alternative to this would be to use something like a NavigationView, or anyhthing that can hold more information for what it wants to happen.
+         * Then you could condense all these methods down to a single one.
+         * But seeing as this is an stuy-project in programming and won't ever be perfect, I will leave it in its current state for now.
+         */
 
         // TODO figure out if new pages are actually being deleted or not when a new one is made
         // currently setting the Content in the frame to null, and hope for a miracle from the garbage man
+
+
+
+
+        // ----     EXTRA PROJECTS PAGE CALL      ------------
 
         private void ProjectSelected_Extra_TestPage(object sender, RoutedEventArgs e)
         {         
@@ -98,12 +121,30 @@ namespace ITstudii
             ContentFrame.Content = new TestPage1();
         }
 
+        private void ProjectSelected_Extra_TalkToMe(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Content = null;
+            ContentFrame.Content = new ExtraProjects.TalkToMe();
+        }
+
+
+
+
+
+
+
+        // ----     RED PROJECTS PAGE CALL      ------------
 
         private void ProjectSelected_Red_Calculator(object sender, RoutedEventArgs e)
         {
             ContentFrame.Content = null;
+            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
+            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
             ContentFrame.Content = new RedProjects.Calculator();
         }
+
+
+
 
 
 
@@ -115,30 +156,6 @@ namespace ITstudii
     }
 
 
-
-    /* TODO possible const values for repetition?
-
-
-    public class MainPageCustomValues
-    {
-        int NavMenuTextAlignHor;
-        int NavMenuTextAlignVer;
-        int NavMenuTextFontSize;
-        int NavMenuImageAlignHor;
-        int NavMenuImageAlignVer;
-
-        public MainPageCustomValues()
-        {
-            NavMenuTextAlignHor = 24;
-            NavMenuTextAlignVer = 4;
-            NavMenuTextFontSize = 16;
-            NavMenuImageAlignHor = 0;
-            NavMenuImageAlignVer = 8;
-
-        }
-    }
-
-    */
 
 
 
